@@ -16,7 +16,6 @@ func main() {
 		Usage: "A simple CLI tool to fetch weather; usage: GoWeather [city]",
 		Action: func(ctx context.Context, cmd *cli.Command) error {
 
-			//TODO Удали не забудь
 			apikey := ""
 
 			city := cmd.Args().Get(0)
