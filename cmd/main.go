@@ -7,30 +7,38 @@ import (
 	"os"
 
 	"github.com/VeRaven21/GoWeather/internal/api"
+	"github.com/VeRaven21/GoWeather/internal/printer"
+
+	"github.com/joho/godotenv"
 	"github.com/urfave/cli/v3"
 )
 
 func main() {
+	godotenv.Load()
+
 	cmd := &cli.Command{
 		Name:  "GoWeather",
 		Usage: "A simple CLI tool to fetch weather; usage: GoWeather [city]",
 		Action: func(ctx context.Context, cmd *cli.Command) error {
 
-			apikey := ""
+			api_key := os.Getenv("OPENWEATHER_API_KEY")
 
 			city := cmd.Args().Get(0)
 
 			fmt.Printf("Собираю информацию о городе %s \n", city)
 
 			//Получаем положение города
-			geoposition, err := api.GetGeolocation(ctx, city, apikey)
+			geoposition, err := api.GetGeolocation(city, api_key)
 
 			if err != nil {
 				log.Fatal(err)
 			}
 
-			fmt.Printf("Местоположение города %s - %v, %v", city, geoposition.Lat, geoposition.Lon)
-
+			weather, err := api.GetWeather(*geoposition, api_key)
+			if err != nil {
+				log.Fatal(err)
+			}
+			printer.PrintWeather(*weather)
 			return nil
 		},
 	}
