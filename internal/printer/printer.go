@@ -40,7 +40,7 @@ func tempColor(temp float64) string {
 
 func PrintWeather(w api.Weather) {
 	fmt.Println(White + "📍 Текущая погода" + Reset)
-	fmt.Printf("🌡️  Температура: %s\n", tempColor(w.CurrentWeather.Temperature))
+	fmt.Printf("🌡️ Температура: %s\n", tempColor(w.CurrentWeather.Temperature))
 	fmt.Printf("💧 Влажность:   %s%.0f%%\n", Blue, w.CurrentWeather.Humidity)
 	fmt.Printf("💨 Ветер:       %.1f м/с %s (%s)\n", w.CurrentWeather.WindSpeed, windDirection(w.CurrentWeather.WindDirection), Blue+fmt.Sprintf("%.0f°", w.CurrentWeather.WindDirection)+Reset)
 
