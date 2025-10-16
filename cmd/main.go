@@ -21,20 +21,18 @@ func main() {
 		Usage: "A simple CLI tool to fetch weather; usage: GoWeather [city]",
 		Action: func(ctx context.Context, cmd *cli.Command) error {
 
-			api_key := os.Getenv("OPENWEATHER_API_KEY")
-
 			city := cmd.Args().Get(0)
 
 			fmt.Printf("Собираю информацию о городе %s \n", city)
 
 			//Получаем положение города
-			geoposition, err := api.GetGeolocation(city, api_key)
+			geoposition, err := api.GetGeolocation(city)
 
 			if err != nil {
 				log.Fatal(err)
 			}
 
-			weather, err := api.GetWeather(*geoposition, api_key)
+			weather, err := api.GetWeather(*geoposition)
 			if err != nil {
 				log.Fatal(err)
 			}

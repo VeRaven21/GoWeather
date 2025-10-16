@@ -1,8 +1,12 @@
 package api
 
+type GeopositionResponse struct {
+	Results []Geoposition `json:"results"`
+}
+
 type Geoposition struct {
-	Lat float64 `json:"lat"`
-	Lon float64 `json:"lon"`
+	Lat float64 `json:"latitude"`
+	Lon float64 `json:"longitude"`
 }
 
 type CurrentWeather struct {

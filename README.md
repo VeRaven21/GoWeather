@@ -3,13 +3,7 @@
 Console application to get weather from terminal
 
 # Usage
-~~Add your Openweather api key in `./cmd/main.go` file and run ~~
-
-Create file named `.env` and past following line
-```
-OPENWEATHER_API_KEY = ...
-```
-with your api key, then run 
+Run 
 ```bash
 go run ./cmd/main.go <city name>
 ```
@@ -33,8 +27,7 @@ Writes weather for today and next 5 days
 - [x] Add actual weather forecast 
 - [x] Add better visuals
 
-- [ ] ~~Add configuration of api key and default city~~ City location Api that doesn't requre api key
+- [x] ~~Add configuration of api key and default city~~ City location Api that doesn't requre api key
 
 - [ ] Different languages output
-
 
