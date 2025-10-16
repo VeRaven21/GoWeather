@@ -33,6 +33,10 @@ func GetGeolocation(city string) (*Geoposition, error) {
 		return nil, err
 	}
 
+	if len(geopos.Results) == 0 {
+		return nil, fmt.Errorf("city not found")
+	}
+
 	return &geopos.Results[0], nil
 }
 

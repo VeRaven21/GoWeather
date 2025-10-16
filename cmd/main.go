@@ -23,12 +23,18 @@ func main() {
 
 			city := cmd.Args().Get(0)
 
+			if city == "" {
+				fmt.Printf("please provide a city name")
+				return nil
+			}
+
 			fmt.Printf("Собираю информацию о городе %s \n", city)
 
-			//Получаем положение города
 			geoposition, err := api.GetGeolocation(city)
-
-			if err != nil {
+			if err.Error() == "city not found" {
+				fmt.Printf("Город %s не найден\n", city)
+				return nil
+			} else if err != nil {
 				log.Fatal(err)
 			}
 
