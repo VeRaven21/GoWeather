@@ -12,7 +12,7 @@ type Config struct {
 	Language    string `yaml:"lang"`
 }
 
-func LoadConfig(path string) (*Config, error) {
+func LoadConfig() (*Config, error) {
 	data, err := os.ReadFile("config.yaml")
 	if err != nil {
 		return nil, fmt.Errorf("file reading error: %w", err)
@@ -24,4 +24,18 @@ func LoadConfig(path string) (*Config, error) {
 		return nil, fmt.Errorf("YAML unmarshal error: %w", err)
 	}
 	return &config, nil
+}
+
+func SaveConfig(config *Config) error {
+	data, err := yaml.Marshal(config)
+	if err != nil {
+		return fmt.Errorf("YAML marshal error: %w", err)
+	}
+
+	err = os.WriteFile("config.yaml", data, 0644)
+	if err != nil {
+		return fmt.Errorf("file writing error: %w", err)
+	}
+
+	return nil
 }

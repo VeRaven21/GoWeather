@@ -22,6 +22,8 @@ Writes weather for today and next 5 days
 🌧️ 2025-10-17: 3.7°C / 1.0°C 🌧️1.5мм
 ☁️ 2025-10-18: 5.0°C / 0.4°C
 ```
+## Default city
+You can also add default city using `-c <Your city>`. If city is set and no other city is passed on launch program will show weather for that city
 
 # To do
 - [x] Add actual weather forecast 
